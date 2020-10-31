@@ -8,6 +8,7 @@ public:
 protected:
 	Shader& m_Shader;
 	friend class Renderer;
+	friend class Block;
 };
 
 class BlockMaterial : public Material
@@ -20,12 +21,12 @@ public:
 
 	virtual void OnUpdate() override
 	{
-		for (int i = 0; i < 3; i++) {
+	/*	for (int i = 0; i < 3; i++) {
 			if (m_Color[i] > 0.6f && m_ColorAdd[i] > 0 || m_Color[i] < 0.2f && m_ColorAdd[i] < 0)
 				m_ColorAdd[i] = -m_ColorAdd[i];
 			m_Color[i] += m_ColorAdd[i];
 		}
-		m_Shader.SetUniform("u_Color", m_Color);
+		m_Shader.SetUniform("u_Color", m_Color);*/
 	}
 private:
 	glm::vec3 m_Color;

@@ -32,7 +32,9 @@ uniform vec3 u_Color;
 
 void main()
 {
-	vec3 lightDirection = normalize(u_LightPosition - v_Position);
-	float diffuse = max(dot(lightDirection, v_Normal), 0.0);
+	vec3 lightDirection = u_LightPosition - v_Position;
+	float lightDistance = sqrt(length(lightDirection)) / 22.f;
+	lightDirection = normalize(lightDirection);
+	float diffuse = max(dot(lightDirection, v_Normal), 0.0) / lightDistance;
 	color = vec4(u_Color * u_LightColor  * diffuse, 1.0);
 }

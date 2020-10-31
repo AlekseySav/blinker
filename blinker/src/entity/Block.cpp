@@ -56,8 +56,9 @@ Block::Block(const Material* material)
 	m_VertexArray.AddVertexBuffer(m_VertexBuffer, layout);
 }
 
-void Block::OnRender(const Renderer& renderer, const glm::vec3& position) const
+void Block::OnRender(const Renderer& renderer, const glm::vec3& position, const glm::vec3& color) const
 {
+	m_Material->m_Shader.SetUniform("u_Color", color);
 	renderer.Draw(this, position);
 }
 
